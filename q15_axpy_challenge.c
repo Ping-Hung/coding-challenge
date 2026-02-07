@@ -43,10 +43,9 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
     q15_axpy_ref(a, b, y, n, alpha);
 #else
     // TODO: Enter your solution here
-   for (int i = 0; i < n; ++i) {
-        int32_t acc = (int32_t)a[i] + (int32_t)alpha * (int32_t)b[i];
-        y[i] = sat_q15_scalar(acc);
-   }
+    while (n > 0) {
+        // set up vector for int32_t arithmetic
+        size_t vl = __riscv_vsetvl_e32m8(
 #endif
 }
 

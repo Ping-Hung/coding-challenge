@@ -90,6 +90,7 @@
 
 # Keywords
 - RV-32, RV-64
+- Vectorization: a parallel computing method with the idea of processing multiple data elements in a single instruction
 
 # Docs and Resources:
 ## Project Contributor Contacts
@@ -97,6 +98,8 @@
 - Christian Herber: https://www.linkedin.com/in/christian-herber-b8a019b9/
 ### Contributors
 - Laurent Le Faucheur: https://www.linkedin.com/in/laurentlefaucheur/
+### Slack Group
+https://risc-v-international.slack.com/x-p1252003144916-10463783596386-10457394375027/messages/C017LD0GJ8Z
 
 ## Environment setup
 - https://medium.com/@e1d1/risc-v-simulation-with-qemu-61ea8f2d8f4b 
@@ -111,6 +114,8 @@
 ## RISC-V V Vector Extension
 - https://drive.google.com/file/d/1RTZi2iOLKzqaX95JCCnzwOm7iCIN3JEq/view
 - https://medium.com/@ulhaqhassan1/understanding-risc-v-vector-architecture-elen-vlen-sew-lmul-vlmax-vl-vstart-explained-680f0abf5b18
+- https://fprox.substack.com/p/risc-v-vector-programming-in-c-with
+- https://github.com/riscv-non-isa/riscv-c-api-doc/blob/main/src/c-api.adoc
 
 ## Coding Challenge
 - https://docs.google.com/document/d/1BLO9GU57161sGLYuBxm7MzcDJSVZIj5OYhqFli7t-Y0/edit?tab=t.0
