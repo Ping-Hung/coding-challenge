@@ -10,7 +10,7 @@
 - [x] Complete the Steps
 - [x] Setup development environment (a RISCV supported system (let's use QEMU as emulator))
     - for now, only RISCV toolchain (which supports vectors) is compiled locally
-- [ ] Begin working on the assigned task
+- [x] Begin working on the assigned task
 
 # Dev Environment notes
 - Only RISCV toolchain is built (i.e. I can compile my c code with `riscv64-unknown-elf-gcc`) 
@@ -116,9 +116,11 @@ https://risc-v-international.slack.com/x-p1252003144916-10463783596386-104573943
 - https://medium.com/@ulhaqhassan1/understanding-risc-v-vector-architecture-elen-vlen-sew-lmul-vlmax-vl-vstart-explained-680f0abf5b18
 - https://fprox.substack.com/p/risc-v-vector-programming-in-c-with
 - https://github.com/riscv-non-isa/riscv-c-api-doc/blob/main/src/c-api.adoc
+- https://dzaima.github.io/intrinsics-viewer
 
 ## Coding Challenge
 - https://docs.google.com/document/d/1BLO9GU57161sGLYuBxm7MzcDJSVZIj5OYhqFli7t-Y0/edit?tab=t.0
 
 ## First Steps of Open Source Contribution
 -  https://github.com/firstcontributions/first-contributions/blob/main/README.md
+
