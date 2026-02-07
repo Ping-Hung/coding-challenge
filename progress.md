@@ -110,6 +110,7 @@
 
 ## RISC-V V Vector Extension
 - https://drive.google.com/file/d/1RTZi2iOLKzqaX95JCCnzwOm7iCIN3JEq/view
+- https://medium.com/@ulhaqhassan1/understanding-risc-v-vector-architecture-elen-vlen-sew-lmul-vlmax-vl-vstart-explained-680f0abf5b18
 
 ## Coding Challenge
 - https://docs.google.com/document/d/1BLO9GU57161sGLYuBxm7MzcDJSVZIj5OYhqFli7t-Y0/edit?tab=t.0

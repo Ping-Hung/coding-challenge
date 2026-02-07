@@ -43,13 +43,10 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
     q15_axpy_ref(a, b, y, n, alpha);
 #else
     // TODO: Enter your solution here
-    /**
-     * How do I make use of RISC-V Vector Intrinsics to accelerate the following loop?
-     */
-    for (int i = 0; i < n; ++i) {
+   for (int i = 0; i < n; ++i) {
         int32_t acc = (int32_t)a[i] + (int32_t)alpha * (int32_t)b[i];
         y[i] = sat_q15_scalar(acc);
-    }
+   }
 #endif
 }
 
