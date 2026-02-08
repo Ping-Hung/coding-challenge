@@ -9,7 +9,7 @@
 **SEW**: selected element width
   + size (in bits) of each element (8, 15, 32)
 ## Mental Model
-**vector** = LMUL * VLEN bits
+**vector** = LMUL * VLEN bits  
 **elements** = (LMUL * VLEN) / element_width
 ## Source
 

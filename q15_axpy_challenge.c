@@ -50,7 +50,7 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
     int32_t alpha32 = (int32_t)alpha;   // cast (sign extend) alpha (a scalar)
     for (int i = 0; i < n; i += vl) {
         // setup vl for the remaining elements, each element 16-bit wide
-        vl = __riscv_vsetvl_e16m1(n - i);
+        vl = __riscv_vsetvl_e16mf2(n - i);
         // load a, b into vector units (respect their original width of 16 bits)
         vint16mf2_t v_a16_mf2 = __riscv_vle16_v_i16mf2(a + i, vl);
         vint16mf2_t v_b16_mf2 = __riscv_vle16_v_i16mf2(b + i, vl);

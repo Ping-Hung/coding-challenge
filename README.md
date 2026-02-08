@@ -12,13 +12,25 @@
 > every thing in c is a representation of `unsigned char[]`
 
 # Design Choices and Reasoning
-## Using RVV
-plan 1: translate `for` loop one to one, see if there are matching RVV functions (strip-mining with loop)
+## Design
+translate the `for` loop one to one, using appropriate RVV functions (strip-mining with loop)
+> Pseudo-code:
 > 1. Initialize vector units/registers
 > 2. Set the 'vl' register (configure vector length)
 > 3. loop:
-> 4.    Load a[i], b[i] into vector registers (sign extended (and widened))
-> 5.    Perform arithmetic, and store it to temp register (acc)
-> 6.    Store result to memory (y[i])
-> 7. if (i < n) goto loop
+> 4.    Load a[i], b[i] into vector registers as they are (`int16_t`)
+> 5.    Perform arithmetic (sign extended), and store it to temp register (`acc`)
+> 7.    int-narrow `acc` to `int16_t`, store it in `result`
+> 8.    Store result to memory (y[i])
+> 9. if (i < n) goto loop
 
+## Implementation and Generated Assembly
++ [q15_axpy_challenge.c]("Implementation")
++ [q15_axpy_challenge.rvv.s]("Assembly")
+### Side Notes:
+Compile instruction: `riscv64-unknown-elf-gcc  q15_axpy_challenge.c -march=rv64gcv -O3 -S q15_axpy_challenge.s`
+
+## Reasoning
+The design attempts to translate the semantic of the provided loop into RVV
+assembly by using RVV C intrinsics. The implementation attempted to achieve
+one-to-one translation of the original `for` loop to RVV assembly for correctness.
