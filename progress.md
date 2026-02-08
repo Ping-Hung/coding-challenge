@@ -78,6 +78,10 @@
     Tsx async abort:        Not affected
 ```
 
+```linux
+
+```
+
 # Development Environment
 - WSL + Qemu (`qemu-user-static` for now)
 - setup: 
@@ -116,6 +120,7 @@ https://risc-v-international.slack.com/x-p1252003144916-10463783596386-104573943
 - https://medium.com/@ulhaqhassan1/understanding-risc-v-vector-architecture-elen-vlen-sew-lmul-vlmax-vl-vstart-explained-680f0abf5b18
 - https://fprox.substack.com/p/risc-v-vector-programming-in-c-with
 - https://github.com/riscv-non-isa/riscv-c-api-doc/blob/main/src/c-api.adoc
+### RVV Intrinsics Viewer
 - https://dzaima.github.io/intrinsics-viewer
 
 ## Coding Challenge

@@ -42,10 +42,27 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
     // Fallback (keeps correctness off-target)
     q15_axpy_ref(a, b, y, n, alpha);
 #else
+    // Vectors: a: int16_t[], b: int16_t[], y: int16_t[], acc: int32_t[]
+    // scalar: n: int16_t, alpha: int16_t
     // TODO: Enter your solution here
-    while (n > 0) {
-        // set up vector for int32_t arithmetic
-        size_t vl = __riscv_vsetvl_e32m8(
+    // strip-mining loop
+    size_t vl = 0;
+    int32_t alpha32 = (int32_t)alpha;   // cast (sign extend) alpha (a scalar)
+    for (int i = 0; i < n; i += vl) {
+        // setup vl for the remaining elements, each element 16-bit wide
+        vl = __riscv_vsetvl_e16m1(n - i);
+        // load a, b into vector units (respect their original width of 16 bits)
+        vint16mf2_t v_a16_mf2 = __riscv_vle16_v_i16mf2(a + i, vl);
+        vint16mf2_t v_b16_mf2 = __riscv_vle16_v_i16mf2(b + i, vl);
+        // compute int32_t acc = (int32_t)a[i] + (int32_t)alpha * (int32_t)b[i];
+        // with sign-extended multiply then sign-extended add
+        vint32m1_t v_acc32_m1 = __riscv_vwmul_vx_i32m1(v_b16_mf2, alpha32); // sign-extended multiply first
+        v_acc32_m1 = __riscv_vwadd_wv_i32m1(v_acc32_m1, v_a16_mf2); // arg1: vint32m1_t; arg2: vint16mf2_t
+        // convert result from int32_t to int16_t
+        vint16mf2 result = __riscv_vncvt_x_x_w_i16mf2(v_acc32_m1, vl);
+        // store result to memory (vector y)
+        __riscv_vse16_v_i16mf2(y + i, result, vl);  // base, value, vector length
+    }
 #endif
 }
 
