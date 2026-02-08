@@ -1,4 +1,5 @@
 # Coding Challenge
++ GitHub link: https://github.com/Ping-Hung/coding-challenge/tree/main
 ## Main operations (Without Optimization)
 ```c
    for (int i = 0; i < n; ++i) {
