@@ -28,7 +28,10 @@ translate the `for` loop one to one, using appropriate RVV functions (strip-mini
 Compile instruction: `riscv64-unknown-elf-gcc  q15_axpy_challenge.c -march=rv64gcv -O3 -S q15_axpy_challenge.s`
 
 ## Reasoning
-The design attempts to translate the semantic of the provided loop into RVV
-assembly by using RVV C intrinsics. The implementation attempted to achieve
-one-to-one translation of the original `for` loop to RVV assembly for correctness.
++ The design attempts to translate the semantic of the provided loop into RVV
+  assembly by using RVV C intrinsics. The implementation attempted to achieve
+  one-to-one translation of the original `for` loop to RVV assembly for
+  correctness.
++ Version2 (V2): Will try to swap the use of `mf2` types to `m1` to ensure more
+  elements are processed in each iteration
 

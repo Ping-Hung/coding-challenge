@@ -50,18 +50,18 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
     int32_t alpha32 = (int32_t)alpha;   // cast (sign extend) alpha (a scalar)
     for (int i = 0; i < n; i += vl) {
         // setup vl for the remaining elements, each element 16-bit wide
-        vl = __riscv_vsetvl_e16mf2(n - i);
+        vl = __riscv_vsetvl_e16m1(n - i);
         // load a, b into vector units (respect their original width of 16 bits)
-        vint16mf2_t v_a16_mf2 = __riscv_vle16_v_i16mf2(a + i, vl);
-        vint16mf2_t v_b16_mf2 = __riscv_vle16_v_i16mf2(b + i, vl);
+        vint16m1_t v_a16_m1 = __riscv_vle16_v_i16m1(a + i, vl);
+        vint16m1_t v_b16_m1 = __riscv_vle16_v_i16m1(b + i, vl);
         // compute int32_t acc = (int32_t)a[i] + (int32_t)alpha * (int32_t)b[i];
         // with sign-extended multiply then sign-extended add
-        vint32m1_t v_acc32_m1 = __riscv_vwmul_vx_i32m1(v_b16_mf2, alpha32); // sign-extended multiply first
-        v_acc32_m1 = __riscv_vwadd_wv_i32m1(v_acc32_m1, v_a16_mf2); // arg1: vint32m1_t; arg2: vint16mf2_t
+        vint32m2_t v_acc32_m2 = __riscv_vwmul_vx_i32m2(v_b16_m1, alpha32); // sign-extended multiply first
+        v_acc32_m2 = __riscv_vwadd_wv_i32m2(v_acc32_m2, v_a16_m1); // arg1: vint32m1_t; arg2: vint16m1_t
         // convert result from int32_t to int16_t
-        vint16mf2 result = __riscv_vncvt_x_x_w_i16mf2(v_acc32_m1, vl);
+        vint16m1 result = __riscv_vncvt_x_x_w_i16m1(v_acc32_m2, vl);
         // store result to memory (vector y)
-        __riscv_vse16_v_i16mf2(y + i, result, vl);  // base, value, vector length
+        __riscv_vse16_v_i16m1(y + i, result, vl);  // base, value, vector length
     }
 #endif
 }
