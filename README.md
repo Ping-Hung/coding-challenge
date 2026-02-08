@@ -1,6 +1,4 @@
 # Coding Challenge
-
-## Main operations (Without Optimization)
 ## Main operations (Without Optimization)
 ```c
    for (int i = 0; i < n; ++i) {
@@ -33,3 +31,4 @@ Compile instruction: `riscv64-unknown-elf-gcc  q15_axpy_challenge.c -march=rv64g
 The design attempts to translate the semantic of the provided loop into RVV
 assembly by using RVV C intrinsics. The implementation attempted to achieve
 one-to-one translation of the original `for` loop to RVV assembly for correctness.
+
