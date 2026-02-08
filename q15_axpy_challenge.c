@@ -1,6 +1,4 @@
-// src/q15_axpy_challenge.c
-// Single-solution RVV challenge: Q15 y = a + alpha * b  (saturating to Q15)
-//
+// github link: https://github.com/Ping-Hung/coding-challenge/tree/main
 
 #include <stdio.h>
 #include <stdint.h>
