@@ -32,6 +32,11 @@ Compile instruction: `riscv64-unknown-elf-gcc  q15_axpy_challenge.c -march=rv64g
   assembly by using RVV C intrinsics. The implementation attempted to achieve
   one-to-one translation of the original `for` loop to RVV assembly for
   correctness.
-+ Version2 (V2): Will try to swap the use of `mf2` types to `m1` to ensure more
-  elements are processed in each iteration
++ Version2 (V2): 
+    - Try swapping the use of `mf2` types to `m1` to ensure more elements
+      are processed in each iteration
+    - Try using `__riscv_vnclip_wx_i16m1(result, 0, vl);` so the int-narrowing
+      actually have the semantic meaning of `sat_q15_scalar`
++ The output assembly stay unchanged probably because of the `-O3` flag, but
+  that flag is required on my machine to output RVV assembly
 
