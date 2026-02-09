@@ -235,7 +235,7 @@ main:
 	addi	s1,s1,2
 	bne	s7,s0,.L37
  #APP
-# 85 "q15_axpy_challenge.c" 1
+# 83 "q15_axpy_challenge.c" 1
 	rdcycle a1
 # 0 "" 2
  #NO_APP
@@ -280,7 +280,7 @@ main:
 	add	a3,a3,a2
 	bne	a4,zero,.L38
  #APP
-# 85 "q15_axpy_challenge.c" 1
+# 83 "q15_axpy_challenge.c" 1
 	rdcycle a5
 # 0 "" 2
  #NO_APP
@@ -289,7 +289,7 @@ main:
 	addi	a0,a0,%lo(.LC2)
 	call	printf
  #APP
-# 85 "q15_axpy_challenge.c" 1
+# 83 "q15_axpy_challenge.c" 1
 	rdcycle s2
 # 0 "" 2
  #NO_APP
@@ -334,7 +334,7 @@ main:
 	add	a3,a3,a2
 	bne	a4,zero,.L39
  #APP
-# 85 "q15_axpy_challenge.c" 1
+# 83 "q15_axpy_challenge.c" 1
 	rdcycle s1
 # 0 "" 2
  #NO_APP
