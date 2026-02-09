@@ -56,8 +56,8 @@ void q15_axpy_rvv(const int16_t *a, const int16_t *b, int16_t *y, int n, int16_t
         // with sign-extended multiply then sign-extended add
         vint32m2_t v_acc32_m2 = __riscv_vwmul_vx_i32m2(v_b16_m1, alpha32); // sign-extended multiply first
         v_acc32_m2 = __riscv_vwadd_wv_i32m2(v_acc32_m2, v_a16_m1); // arg1: vint32m1_t; arg2: vint16m1_t
-        // convert result from int32_t to int16_t (saturation clip)
-        vint16m1 result = __riscv_vnclip_wx_i16m1(result, 0, vl);
+        // convert result from int32_t to int16_t (saturation clip, round to nearest, ties to even)
+        vint16m1 result = __riscv_vnclip_wx_i16m1(result, 0, __RISCV_VXRM_RN, vl);
         // store result to memory (vector y)
         __riscv_vse16_v_i16m1(y + i, result, vl);  // base, value, vector length
     }
